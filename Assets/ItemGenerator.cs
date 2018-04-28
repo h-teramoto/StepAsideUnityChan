@@ -154,10 +154,12 @@ public class ItemGenerator : MonoBehaviour
             Renderer rend = go.GetComponent<Renderer>();
 
             //unitychanよりもアイテムが後ろにあり且つ画面の外に出ている場合
-            if (unitychanPosz > go.transform.position.z && !rend.isVisible)
+            if (unitychanPosz > go.transform.position.z + 5)
             {
+                Debug.Log("破棄:" + go.transform.position.z);
                 //破棄する
-                Destroy(go);
+                Destroy(go.gameObject);
+                
                 yield break;
             }
 
